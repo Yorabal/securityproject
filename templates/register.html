@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <div class="register">
+    <h1>Register</h1>
+    <div class="links">
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}" class="active">Register</a>
+      <a href="{{ url_for('reset_password') }}">Reset</a>
+    </div>
+    <form action="{{ url_for('register') }}" id="captcha_form" method="post" autocomplete="off">
+      <!-- ... (other form fields) ... -->
+    <label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required >
+
+				<label for="confirm_password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password" required>
+
+				<label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input type="email" name="email" placeholder="Email" id="email" required>
+
+      <!-- Place the reCAPTCHA widget inside the form -->
+      <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
+      <div class="msg">{{ msg }}</div>
+      <input type="submit" value="Register">
+    </form>
+  </div>
+</body>
+</html>

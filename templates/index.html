@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body>
+<div class="login">
+<h1>Login</h1>
+<div class="links">
+<a href="{{ url_for('login') }}" class="active">Login</a>
+<a href="{{ url_for('register') }}">Register</a>
+<a href="{{ url_for('reset_password') }}"> Reset</a>
+</div>
+<form action="{{ url_for('login') }}" id="captcha_form" method="post">
+<label for="username"><i class="fas fa-user"></i></label>
+<input type="text" name="username" placeholder="Username" id="username"
+required>
+<label for="password">
+<i class="fas fa-lock"></i></label>
+<input type="password" name="password" placeholder="Password" id="password"
+required>
+
+<div style="margin-bottom: 7px;" class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
+    <div class="msg">{{ msg }}</div>
+<input type="submit" value="Login">
+</form>
+</div>
+
+
+</body>
+</html>
